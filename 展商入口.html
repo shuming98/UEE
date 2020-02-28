@@ -1,0 +1,404 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name=”viewport” content="initial-scale=2.0,width=device-width,user-scalable=yes"/>
+	<!--图标-->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+	<title>展商入口</title>
+	<style>
+ *{font-family: Helvetica,"Microsoft YaHei",STXihei,sans-serif;}
+	.clear  {clear:both;height:0;overflow:hidden;}
+	/*导航栏*/
+	.navbar {
+    overflow: visible;
+    background-color: #333;
+    font-family:sans-serif;
+}
+
+
+.navbar a {
+    float: left;
+    font-size: 1em;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: visible;
+}
+
+.dropdown .dropbtn {
+    font-size: 1em;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: #333;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/*动画效果*/
+   .lightSpeedIn {
+  -webkit-animation-name: lightSpeedIn;
+  animation-name: lightSpeedIn;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes lightSpeedIn {
+  0% {
+  -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
+  transform: translate3d(100%, 0, 0) skewX(-30deg);
+  opacity: 0;
+  }
+  60% {
+  -webkit-transform: skewX(20deg);
+  transform: skewX(20deg);
+  opacity: 1;
+  }
+  80% {
+  -webkit-transform: skewX(-5deg);
+  transform: skewX(-5deg);
+  opacity: 1;
+  }
+  100% {
+  -webkit-transform: none;
+  transform: none;
+  opacity: 1;
+  }
+  }
+  @keyframes lightSpeedIn {
+  0% {
+  -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
+  transform: translate3d(100%, 0, 0) skewX(-30deg);
+  opacity: 0;
+  }
+  60% {
+  -webkit-transform: skewX(20deg);
+  transform: skewX(20deg);
+  opacity: 1;
+  }
+  80% {
+  -webkit-transform: skewX(-5deg);
+  transform: skewX(-5deg);
+  opacity: 1;
+  }
+  100% {
+  -webkit-transform: none;
+  transform: none;
+  opacity: 1;
+  }
+  } 
+/*主体内容*/
+* {box-sizing: border-box}
+.tab {
+    float: left;
+    width: 12%;
+    height:500px;
+    border-right:1px solid #999;
+    margin-left: 8%;
+}
+
+.tab a {
+	text-decoration: none;
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 5px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: center;
+    cursor:pointer;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.tab a:hover {
+	background: #ddd;
+}
+
+.tab a.active {
+	font-weight: bold;
+}
+
+.tabcontent {
+    float: left;
+    padding: 0px 12px;
+    width: 75%;
+    height: 800px;
+    overflow: auto;
+}
+.tabcontent h1{
+	border-bottom: 1px solid #ccc;
+	font-weight: normal;
+	color: #666;
+}
+#price{
+  font-size: 1em;
+}
+#price td{
+  border:1px solid #ccc;
+  text-align: center;
+
+}
+#logo li img{
+  float:left;
+  width: 14%;
+  height: 130px;
+}
+	</style>
+</head>
+<body style="margin:0px;">
+	<!--导航栏-->
+  <div class="navbar" style="height: 52px;width: 100%;">
+    <div style="margin-left: 40%;">  <!--移动导航标签位置-->
+  <a href="./index.html">首页</a>
+  <div class="dropdown">
+    <button class="dropbtn" style="cursor: pointer;">线上展厅
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./三维场景.html">三维场景</a>
+      <a href="./index.html#look">网上展览</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn" style="cursor: pointer;">关于UEE 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./关于UEE.html">展会概况</a>
+      <a href="./关于UEE.html">服务团队</a>
+      <a href="./关于UEE.html">同期活动</a>
+      <a href="./关于UEE.html">展讯快报</a>
+      <a href="./关于UEE.html">下载中心</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn" style="cursor: pointer;">展商
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./展商入口.html">参展范围</a>
+      <a href="./展商入口.html">展位报价</a>
+      <a href="./展商入口.html">展区规划</a>
+      <a href="./展商入口.html">展商名录</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn" style="cursor: pointer;">观众
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./观众入口.html">观众服务</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn" style="cursor: pointer;">媒体 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./媒体对接.html">媒体对接</a>
+      <a href="./媒体对接.html">新闻中心</a>
+      <a href="./媒体对接.html">合作媒体</a>
+    </div>
+  </div> 
+</div>
+</div>
+<div class="clear"></div>
+<!--头图-->
+<div class="lightSpeedIn" style="position: absolute;right:38%;top:100px;font-size: 1em;color: #000; text-shadow: 0 0 30px #FFF;text-align: center;">
+<h1>第一届无人经济体验展</h1>
+<h1>2019.6.28~6.30</h1>
+<h1>广州保利世贸博览馆</h1>
+</div>
+<img style="width: 100%;height: 300px;margin-top: 0px;" src="./展商入口/header.jpg" alt="hreader" />
+<!--主体内容-->
+<div style="height: 500px;margin-top: 30px;">
+<div class="tab">
+  <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'c-2')" id="defaultOpen">参展范围</a>
+  <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'c-3')">展位报价</a>
+  <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'c-4')">展区规划</a>
+  <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'c-5')">展商名录</a>
+</div>
+
+<div id="c-2" class="tabcontent">
+  <a name="c-2"></a>
+  <h1 style="padding: 0 0 5px 5px;">参展范围</h1>
+  <ul style="font-size:1em;">
+    <li>零售类<p>无人店、自动贩卖机、开放货架等。</p></li>
+    <li>餐饮类<p>无人餐厅、餐饮系统等。</p></li>
+    <li>娱乐类<p>迷你ktv、自助照片打印机、娃娃机等。</p></li>
+    <li>生活类<p>智能快递柜、自助式证件照摄影、自助租借雨伞、自助租借充电宝、无人洗车、无人银行等。</p></li>
+    <li>健康类<p>无人健身房、无人值守按摩椅、无人医院等。</p></li>
+  </ul>
+</div>
+
+<div id="c-3" class="tabcontent">
+  <a name="c-3"></a>
+  <h1 style="padding: 0 0 5px 5px;">展位报价</h1>
+  <table id="price" style="border-collapse: collapse;width: 80%;">
+    <tr>
+      <td colspan="5" style="text-align: center;padding: 5px 0 5px;">展位价格表</td>
+    </tr>
+    <tr>
+      <td style="width: 18%;padding: 5px 0 5px;">展台类型</td>
+      <td style="width: 15%;">展台规格</td>
+      <td style="width: 10%;">单位</td>
+      <td style="width: 12%;">价格</td>
+      <td style="text-align: center;width: auto;">基本配置</td>
+    </tr>
+    <tr>
+      <td>标准展台（单开）</td>
+      <td>3m*3m</td>
+      <td>个</td>
+      <td>8000</td>
+      <td rowspan="2" style="line-height: 1.5;padding:7px 10px 7px">围板、楣板、隔板、地毯、两支射灯、一桌两椅、一个纸篓、一个200v/500w电源插座、矿泉水</td>
+    </tr>
+    <tr>
+      <td>标准展台（双开）</td>
+      <td>3m*3m</td>
+      <td>个</td>
+      <td>9000</td>
+    </tr>
+    <tr>
+      <td>豪华展台（单开）</td>
+      <td>3m*3m</td>
+      <td>个</td>
+      <td>10000</td>
+      <td rowspan="2" style="line-height: 1.5;padding: 7px 10px 7px">围板、灯箱楣板、隔板、四支射灯、一张铝合金方桌、四张折叠椅、一张报道台、一个展示柜、一个含锁地柜、一个纸篓、一个200v/500w电源插座、矿泉水</td>
+    </tr>
+    <tr>
+      <td>豪华展台（双开）</td>
+      <td>3m*3m</td>
+      <td>个</td>
+      <td>11000</td>
+    </tr>
+    <tr>
+      <td style="padding: 5px 0 5px;">特装光地</td>
+      <td>36m²起租</td>
+      <td>m²</td>
+      <td>800</td>
+      <td>无</td>
+    </tr>
+  </table>
+</div>
+<div id="c-4" class="tabcontent">
+  <a name="c-4"></a>
+  <h1 style="padding: 0 0 5px 5px;">展区规划</h1>
+  <p><img style="" src="./展商入口/平面图.jpg" alt="" /></p>
+</div>
+
+<div id="c-5" class="tabcontent">
+  <a name="c-5"></a>
+  <h1 style="padding: 0 0 5px 5px;">展商名录</h1>
+   <ul id="logo" style="list-style-type: none;margin:auto;">
+          <li><img src="./首页/展商/1.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/2.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/3.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/4.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/5.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/6.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/7.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/9.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/12.png" alt="展商logo" /></li>
+          <li><img src="./首页/展商/11.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/10.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/13.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/8.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/14.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/25.png" alt="展商logo" /></li>
+          <li><img src="./首页/展商/16.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/15.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/17.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/20.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/21.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/22.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/23.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/24.jpg" alt="展商logo" /></li>
+        </ul>
+</div>
+</div>
+<!--联系我们-->
+<div id="footer" style="width: 100%;height: 320px;background: #242424;margin-top: 300px;">
+  <h1 style="color: white;text-align: center;font-size: 2.5em;font-weight: normal;line-height: 72px;">联系我们</h1>
+  <div style="display: block;margin:0 auto 0;">
+  <div id="left" style="width: 30%;height: 250px;margin-left: 10%;float: left;margin-top: -10px;">
+    <p style="color: white;font-weight: bold;">主办单位</p>
+    <span style="color: white;">中国百货商业协会自助售货行业分会</span><br/>
+    <span style="color: white;">广东省互联网协会</span>
+    <p style="color: white;margin-top: 20px;font-weight: bold;">承办单位</p>
+    <span style="color: white;">广州南望会展有限公司</span>
+  </div>
+    <div id="middle" style="float: left;width: 20%;height: 250px;margin-left: 5%;margin-top: -10px;">
+      <p style="color: white;font-weight: bold;margin-bottom: 30px;">展会预定联络</p>
+      <p><i class="fa fa-user" style="color: white;font-size: 18px;">&nbsp&nbsp&nbsp陈小姐</i></p>
+      <p><i class="fa fa-phone" style="color: white;font-size: 18px;">&nbsp&nbsp&nbsp+86 123456789</i></p>
+      <p><i class="fa fa-envelope" style="color: white;font-size: 18px;">&nbsp&nbsp&nbsp12345678@qq.com</i></p>
+    </div>
+    <div id="right" style="float: left;margin-top: 0px;margin-left:10%;width: 
+    10%;margin-top: 7px;">
+      <img style="border: 5px solid white;" src="./首页/qrcode.png" alt="qrcode" />
+      <p style="color: white;text-align: center;margin-top: 5px;">扫一扫，关注</p>
+      <p style="color: white;text-align: center;margin-top: -15px;">官方微信公众号</p>
+    </div>
+  </div>
+</div>
+<div style="width: 100%;background: #444;padding-top:5px;height: 50px;"><p style="text-align: center;line-height: 20px;color:white"><a style="color: white;text-decoration: none;" href="http://www.miitbeian.gov.cn/">粤ICP备18036003号-2</a> | Copyright ©2018 无人经济体验展策划小组</p></div>
+</body>
+<script>
+function openCity(evt, Name) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(Name).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+document.getElementById("defaultOpen").click();
+</script>
+</html>

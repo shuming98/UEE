@@ -1,0 +1,899 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+ <meta name=”viewport” content="initial-scale=2.0,width=device-width,user-scalable=yes"/>
+	<!--图标-->
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+  <!--图片点击-->
+   <link rel="stylesheet" href="./图片详细/clickpic.css" />
+  <script src="./图片详细/velocity.js"></script>
+  <script src="./图片详细/modern.js"></script>
+	<title>第一届无人经济体验展</title>
+	<style>
+  @media(max-width: 760px) {
+    #rightArrow {display: none;}
+    #floatDivBoxs{display: none;}
+  }
+  *{font-family: Helvetica,"Microsoft YaHei",STXihei,sans-serif;box-sizing: border-box;}
+/*导航栏*/
+  .navbar {
+    overflow: visible;
+    background-color: #333;
+    font-family:sans-serif;
+}
+
+.navbar a {
+    float: left;
+    font-size: 1em;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: visible;
+}
+
+.dropdown .dropbtn {
+    font-size: 1em;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: #333;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/*首*/
+@import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600");
+.more-pens {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 10;
+  font-family: "Montserrat";
+  font-size: 12px;
+}
+
+a.white-mode, a.white-mode:link, a.white-mode:visited, a.white-mode:active {
+  font-family: "Montserrat";
+  font-size: 12px;
+  text-decoration: none;
+  background: #212121;
+  padding: 4px 8px;
+  color: #f7f7f7;
+}
+a.white-mode:hover, a.white-mode:link:hover, a.white-mode:visited:hover, a.white-mode:active:hover {
+  background: #edf3f8;
+  color: #212121;
+}
+
+.title h1 {
+  position: relative;
+  color: #FFF;
+  font-weight: 100;
+  font-size: 4em;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  text-shadow: 0 0 10px #00a2ca,0 0 20px #00a2ca,0 0 30px #00a2ca,0 0 40px #00b4ca,0 0 70px #00b4ca,0 0 80px #00b4ca,0 0 100px #00b4ca,0 0 150px #00b4ca;
+}
+.title h3 {
+  font-weight: 200;
+  font-size:2em;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  color: #FFFFFF;
+  letter-spacing: 2px;
+}
+/*五大板块标签页 */
+.tab {
+    overflow: hidden;
+}
+
+.tab ul a li{
+	float: left;
+	margin-left: 8%;
+	text-align: center;
+}
+.tab ul a{
+	text-decoration: none;
+	color: black;
+}
+.tab ul a:hover {
+	color: #00a2ca;
+}
+.tab ul a.active {
+  color:#00a2ca;
+}
+.tabcontent {
+	width: 100%;
+	height: 400px;
+  overflow: hidden;
+  margin:auto;
+    display:none;
+    padding: 6px 12px;
+    background: #eee;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+/*在线视频区*/
+.hovereffect {
+  width: 100%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  cursor: default;
+}
+
+.hovereffect .overlay {
+  position: absolute;
+  overflow: hidden;
+  width: 80%;
+  height: 80%;
+  left: 10%;
+  top: 10%;
+  border-bottom: 1px solid #FFF;
+  border-top: 1px solid #FFF;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: scale(0,1);
+  -ms-transform: scale(0,1);
+  transform: scale(0,1);
+}
+
+.hovereffect:hover .overlay {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.hovereffect img {
+  display: block;
+  filter: brightness(0.4);
+  -webkit-filter: brightness(0.4);
+  position: relative;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+
+.hovereffect:hover img {
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="linear" slope="0.6" /><feFuncG type="linear" slope="0.6" /><feFuncB type="linear" slope="0.6" /></feComponentTransfer></filter></svg>#filter');
+  filter: brightness(1);
+  -webkit-filter: brightness(1);
+}
+.hovereffect a{
+  text-decoration: none;
+}
+.hovereffect h2 {
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  top:30%;
+  font-size: 17px;
+  background-color: transparent;
+  color: #fff;
+  padding: 1em 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+}
+
+.hovereffect a, .hovereffect p {
+  color: #FFF;
+  padding: 1em 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(0,100%,0);
+  transform: translate3d(0,100%,0);
+}
+
+.hovereffect:hover a, .hovereffect:hover p, .hovereffect:hover h2 {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+#logo li img{
+  width: 13%;
+  height: 130px;
+  float:left;
+  opacity: 0.5;
+}
+	</style>
+</head>
+  <body style="margin:0px;">
+  <a name="top"></a>
+	<!--导航栏-->
+  <div class="navbar" style="height: 52px;width: 100%;z-index: 999;">
+    <div style="margin-left: 40%;">  <!--移动导航标签位置-->
+  <a href="./index.html">首页</a>
+  <div class="dropdown">
+    <button class="dropbtn" style="cursor: pointer;">线上展厅
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./三维场景.html">三维场景</a>
+      <a href="#look">网上展览</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn" style="cursor: pointer;">关于UEE 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./关于UEE.html">展会概况</a>
+      <a href="./关于UEE.html">服务团队</a>
+      <a href="./关于UEE.html">同期活动</a>
+      <a href="./关于UEE.html">展讯快报</a>
+      <a href="./关于UEE.html">下载中心</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn" style="cursor: pointer;">展商
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./展商入口.html">参展范围</a>
+      <a href="./展商入口.html">展位报价</a>
+      <a href="./展商入口.html">展区规划</a>
+      <a href="./展商入口.html">展商名录</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn" style="cursor: pointer;">观众
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./观众入口.html">观众服务</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn" style="cursor: pointer;">媒体 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./媒体对接.html">媒体对接</a>
+      <a href="./媒体对接.html">新闻中心</a>
+      <a href="./媒体对接.html">合作媒体</a>
+    </div>
+  </div> 
+</div>
+</div>
+<div class="clear"></div>
+<div id="am" style="width: 100%;height: 600px;background: #472b68;"></div>
+  <div id="hi" class="title" style="width: 100%;z-index: 10;position: absolute;left: 50%;top:330px;transform: translateX(-50%) translateY(-50%);font-family: Montserrat;text-align: center;">
+    <img style="display: block;width: 12%;margin:auto;margin-bottom: 20px;opacity: 0.8" src="./首页/logo.png" alt="" />
+    <h3 style="margin-bottom: 10px;">2019.6.28~6.30</h3>
+    <h1>第一届无人经济体验展</h1>
+    <h4 style=" font-weight: 200;font-size: 2.5em;padding: 0;margin: 0;line-height: 2;color: #FFFFFF;letter-spacing: 2px;">新方式 轻生活</h4>
+    <h3 style="margin-bottom:20px;color:#ccc;">广州保利世贸博览馆</h3>
+    <a href="./展商报名.html" style="display: block;float: left;width: 160px;color: #f8f8f8;background:#08aba6;text-decoration: none;font-size: 1.5em;padding: 5px 12px 5px;text-align: center;border: 1px solid #08aba6;border-radius: 5px;margin:2% 33%;"><i class="fa fa-paper-plane"></i>展商报名</a>
+  <a href="./观众登记.html" style="display: block;float: left;width: 160px;color: #f8f8f8;background:transparent;text-decoration: none;font-size: 1.5em;padding: 5px 12px 5px;text-align: center;border: 1px solid #08aba6;border-radius: 5px;margin:2% 0% 0 -26%"><i class="fa fa-paper-plane"></i>观众登记</a>
+</div>
+<!--客服-->
+<div style="width:200px;height: 150px;position: fixed;right:-160px;top:30%;z-index: 999;">
+  <div id="rightArrow" style="width:40px;height:150px;cursor: pointer;background:#f3f3f3;border-radius: 5px;z-index:999;font-size: 1.3em;color: #00b4e8;text-align: center;box-shadow:-2px 0 3px rgba(0,0,0,0.25);position:absolute;top:60px;">在线客服<i class="fa fa-comments"></i>
+    <a style="display:block;height:45px;" href="javascript:;" title="在线客户"></a>
+</div>
+<div id="floatDivBoxs" style="width:160px;background:#fff;z-index:999;overflow: auto;position: absolute;right:0;">
+    <div class="floatShadow" style="background:#fff;box-shadow:-2px 0 3px rgba(0,0,0,0.25);">
+        <ul class="floatDqq" style="padding:0 14px;border-bottom: 1px solid #ddd">
+            <li style="list-style-type: none;">
+                <a style="text-decoration: none;font-size: 1.3em;color: #00b4e8;line-height:45px;" target="_blank" href="tencent://message/?uin=88888&Site=fdfdf&Menu=yes"><i class="fa fa-qq"></i>&nbsp;&nbsp;QQ客服</a>
+            </li>
+        </ul>
+        <div class="floatDtxt" style="font-size: 1.3em;color: #00b4e8;padding:0 14px 8px;border-bottom: 1px solid #ddd;">
+          <i class="fa fa-volume-control-phone"></i> 88888888</div>
+        <div style="text-align:center;padding:10px 0 5px;font-size: 1.2em"><img src="./首页/qrcode.png"><br>微信公众账号</div>
+    </div>
+</div>
+</div>
+
+<!--五大板块-->
+<a name="look"></a>
+<div style="margin:100px auto 0 ">
+<div> 
+  <span style="display: block;width: 90px;height: 5px;background:#00b4e8;margin: auto; "></span>
+  <h1 style="margin:auto;text-align: center;">板块</h1>
+</div>
+<div class="tab" style="width: 100%;margin:50px auto 0;height: auto;">
+<ul style="list-style-type: none;">
+	<a href="javascript:void(0)"><li class="tablinks" onclick="openCity(event, 'retail')" style="font-size: 1.4em;"><img style="max-width: 100%;border:none;" src="./首页/1.png" alt="" /><br/>无人零售</li></a>
+	<a href="javascript:void(0)"><li class="tablinks" onclick="openCity(event, 'entertainment')" style="font-size: 1.4em;"><img style="max-width: 100%;border:none;" src="./首页/2.png" alt="" /><br/>娱乐</li></a>
+	<a href="javascript:void(0)"><li class="tablinks" onclick="openCity(event, 'life')" style="font-size: 1.4em;"><img style="max-width: 100%;border:none;" src="./首页/3.png" alt="" /><br/>生活</li></a>
+	<a href="javascript:void(0)"><li class="tablinks" onclick="openCity(event, 'food')" style="font-size: 1.4em;"><img style="max-width: 70%;border:none;" src="./首页/4.png" alt="" /><br/>餐饮</li></a>
+	<a href="javascript:void(0)"><li class="tablinks" onclick="openCity(event, 'health')" style="font-size: 1.4em;"><img style="max-width: 100%;border:none;" src="./首页/5.png" alt="" /><br/>健康</li></a>
+</ul>
+</div>
+
+<div id="retail" class="tabcontent">
+  <!--缤果盒子-->
+  <ul class="cd-items cd-container">
+    <li class="cd-item" style="margin-top: -50px;background: #fff;height: 350px;width:285px;padding: 5px;margin-left: 5%;">
+      <img style="width: 285px;height: 160px;padding: 0px;" src="./图片详细/缤果盒子示例图.jpg" alt="Item Preview">
+      <a href="#0" class="cd-trigger" style="width: 100%;height: 250px;">点击预览</a>
+    </li>
+  </ul>
+  <div style="position: relative;bottom: 250px;left:7%;">
+    <span style="font-size: 1.3em;font-weight: bold;line-height:3;">缤果盒子</span><br/>
+  <span style="font-size: 1.1em;">24小时智能防盗</span><br/>
+  <span style="font-size: 1.1em;">云端视频数据储存</span><br/>
+  <span style="font-size: 1.1em;">未支付商品自动追查</span><br/>
+  <span style="font-size: 1.1em;">违禁行为系统智能识别</span>
+</div>
+<div class="cd-quick-view">
+    <div class="cd-slider-wrapper">
+      <ul class="cd-slider">
+        <li class="selected"><img style="display: block;width:450px;height: 350px;" src="./图片详细/缤果盒子示例图.jpg" alt="Product 1" />
+        </li>
+      </ul>
+      <ul class="cd-slider-navigation">
+        <li><a class="cd-next" href="#0">上一页</a></li>
+        <li><a class="cd-prev" href="#0">下一页</a></li>
+      </ul>
+    </div>
+    <div class="cd-item-info">
+      <h2 style="font-size: 28px;font-size: 1.5rem;">“不是因为无人才便利，而是想更便利必须无人”</h2>
+      <p style=" line-height: 1.6;margin: 1em 0;color: #67919c;text-indent: 3%;">无人便利店的出现，是弥补了传统社区便利店所触达不到的场景，而且大大的提升了其效率。缤果盒子目前的选址标准是中高端社区，坐电梯、到楼下即可购买，这是传统便利店无法触达到的场景，是把服务和商品从“最后一公里”推向“最后一米”的重要举措。</p>
+      <ul class="cd-item-action">
+        <li><button class="add-to-cart">了解更多</button></li>
+        <i class="fa fa-clone" style="font-size: 1.5em;color:#666;cursor: pointer;"></i>
+        <i class="fa fa-smile-o" style="font-size: 1.5em;color: #666;cursor: pointer;margin-left: 5px;"></i>
+        <i class="fa fa-star-o" style="font-size: 1.5em;color:#666;cursor: pointer;margin-left: 5px;"></i>
+        <i class="fa fa-share-alt" style="font-size: 1.5em;color: #666;cursor: pointer;margin-left: 5px;"></i>
+        <i class="fa fa-tag" style="font-size: 1.5em;color: #666;cursor: pointer;margin-left: 5px;"></i>
+        </ul>
+    </div>
+    <a href="#0" class="cd-close">关闭</a>
+  </div>
+</div>
+<div id="entertainment" class="tabcontent">
+  <h3>娱乐</h3>
+</div>
+
+<div id="life" class="tabcontent">
+  <h3>生活</h3>
+</div>
+<div id="food" class="tabcontent">
+  <h3>餐饮</h3>
+
+</div>
+<div id="health" class="tabcontent">
+  <h3>健康</h3>
+</div>
+</div>
+<!--在线视频区-->
+<div id="middle-container" style="margin:auto;margin-top: 100px">
+<div> 
+  <span style="display: block;width: 90px;height: 5px;background:#00b4e8;margin: auto; "></span>
+  <h1 style="margin:auto;text-align: center;">关于UEE</h1>
+</div>
+<div style="width: 92%;height: 410px;margin:30px auto 0;">
+  <div id="left" style="width: 25%;height: 400px;float: left;margin-right: 2px;">
+<div style="width: 100%;height: 200px;float: left;margin-bottom: 2px;">   
+    <div class="hovereffect">
+        <img class="img-responsive" style="width: 100%;height: 200px;" src="./首页/关于uee/展会介绍.jpg" alt="jpg">
+        <a href="./展商入口.html" target="_blank">
+            <div class="overlay">               
+                <h2>展会介绍</h2>
+            </div></a>
+    </div>
+</div>
+<div style="width: 100%;height: 200px;float: left;">   
+    <div class="hovereffect">
+        <img class="img-responsive" style="width: 100%;height: 200px;" src="./首页/关于uee/创意设计大赛.jpg" alt="jpg">
+        <a href="javascript:void(0)">
+            <div class="overlay">                               
+              <h2>创意设计大赛</h2>
+            </div></a>
+    </div>
+</div>
+</div>
+<div style="width:48%;height:400px;float: left;margin-right: 2px;">   
+    <div class="hovereffect">
+        <img class="img-responsive" style="width: 100%;height: 400px;" src="./首页/关于uee/在线视频.jpg" alt="jpg">
+        <a href="javascript:void(0)">
+            <div class="overlay">              
+                <h2>
+              <i style="font-size: 4em;color: white;" class="fa fa-play-circle"></i>
+              <br/>在线视频
+                </h2>
+            </div></a>
+    </div>
+</div>
+<div id="right" style="width: 25%;height: 400px;float: left;">
+  <div style="width: 100%;height: 200px;float: left;margin-bottom: 2px;">  
+    <div class="hovereffect">
+        <img class="img-responsive" style="width: 100%;height: 200px;" src="./首页/关于uee/网红测评.jpg" alt="jpg">
+        <a href="javascript:void(0)">
+            <div class="overlay">               
+                <h2>网红测评</h2>
+            </div></a>
+    </div>
+</div>
+<div style="width:100%;height: 200px;float: left;">
+    <div class="hovereffect">
+        <img class="img-responsive" style="width: 100%;height: 200px;" src="./首页/关于uee/配套活动.jpg" alt="jpg">
+        <a href="javascript:void(0)">
+            <div class="overlay">               
+                <h2>配套活动</h2>
+            </div></a>
+    </div>
+</div>
+  </div>
+</div>
+</div>
+<!--展商名录-->
+  <div id="container-3" style="margin-top: 100px;">
+    <div>
+  <span style="display: block;width: 90px;height: 5px;background:#00b4e8;margin: auto; "></span>
+  <h1 style="margin:auto;text-align: center;">展商名录</h1>
+      <div style="margin-top: 30px;width: 100%;height: 500px;">
+        <ul id="logo" style="list-style-type: none;margin-left: 4%;">
+          <li><img src="./首页/展商/1.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/2.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/3.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/4.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/5.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/6.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/7.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/9.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/12.png" alt="展商logo" /></li>
+          <li><img src="./首页/展商/11.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/10.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/13.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/8.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/14.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/25.png" alt="展商logo" /></li>
+          <li><img src="./首页/展商/16.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/15.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/17.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/20.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/21.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/22.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/23.jpg" alt="展商logo" /></li>
+          <li><img src="./首页/展商/24.jpg" alt="展商logo" /></li>
+        </ul>
+      </div>
+</div>
+  </div>
+<div id="footer" style="width: 100%;height: 320px;background: #242424;margin-top: 100px;">
+  <h1 style="color: white;text-align: center;font-size: 2.5em;font-weight: normal;line-height: 72px;">联系我们</h1>
+  <div style="display: block;margin:0 auto 0;">
+  <div id="left" style="width: 30%;height: 250px;margin-left: 10%;float: left;margin-top: -10px;">
+    <p style="color: white;font-weight: bold;">主办单位</p>
+    <span style="color: white;">中国百货商业协会自助售货行业分会</span><br/>
+    <span style="color: white;">广东省互联网协会</span>
+    <p style="color: white;margin-top: 20px;font-weight: bold;">承办单位</p>
+    <span style="color: white;">广州南望会展有限公司</span>
+  </div>
+    <div id="middle" style="float: left;width: 20%;height: 250px;margin-left: 5%;margin-top: -10px;">
+      <p style="color: white;font-weight: bold;margin-bottom: 30px;">展会预定联络</p>
+      <p><i class="fa fa-user" style="color: white;font-size: 18px;">&nbsp&nbsp&nbsp陈小姐</i></p>
+      <p><i class="fa fa-phone" style="color: white;font-size: 18px;">&nbsp&nbsp&nbsp+86 123456789</i></p>
+      <p><i class="fa fa-envelope" style="color: white;font-size: 18px;">&nbsp&nbsp&nbsp12345678@qq.com</i></p>
+    </div>
+    <div id="right" style="float: left;margin-left:10%;width: 
+    10%;margin-top: 7px;">
+      <img style="border: 5px solid white;" src="./首页/qrcode.png" alt="qrcode" />
+      <span style="display: block;color:white;font-size: 1em;text-align: center;">扫一扫，关注<br/>官方微信公众号</span>
+    </div>
+  </div>
+</div>
+<div style="width: 100%;background: #444;padding-top:5px;height: 80px;"><p style="text-align: center;line-height: 20px;color:white"><a style="color: white;text-decoration: none;" href="http://www.miitbeian.gov.cn/">粤ICP备18036003号-2</a> | Copyright ©2018 无人经济体验展策划小组</p>
+<p style="text-align: center;line-height: 10px;color:white">*注:本网站为比赛作品，内容纯属虚构</p></div>
+</body>
+<!--首-->
+<script>
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var particles = [];
+var microparticles = [];
+
+var c1 = createCanvas({ width: $("#am").width(), height: $("#am").height() });
+
+var tela = c1.canvas;
+var canvas = c1.context;
+
+// $("body").append(tela);
+$("#am").append(c1.canvas);
+
+var Particle = function () {
+  function Particle(canvas) {
+    _classCallCheck(this, Particle);
+
+    this.random = Math.random();
+    this.random1 = Math.random();
+    this.random2 = Math.random();
+    this.progress = 0;
+    this.canvas = canvas;
+    this.life = 1000 + Math.random() * 3000;
+
+    this.x = $(window).width() / 2 + (Math.random() * 20 - Math.random() * 20);
+    this.y = $(window).height();
+    this.s = 2 + Math.random();
+    this.w = $(window).width();
+    this.h = $(window).height();
+    this.direction = this.random > .5 ? -1 : 1;
+    this.radius = 1 + 3 * this.random;
+    this.color = "#ff417d";
+
+    this.ID = setInterval(function () {
+      microparticles.push(new microParticle(c1.context, {
+        x: this.x,
+        y: this.y
+      }));
+    }.bind(this), this.random * 20);
+
+    setTimeout(function () {
+      clearInterval(this.ID);
+    }.bind(this), this.life);
+  }
+
+  _createClass(Particle, [{
+    key: "render",
+    value: function render() {
+      this.canvas.beginPath();
+      this.canvas.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+      // this.canvas.lineWidth = 2;
+      this.canvas.shadowOffsetX = 0;
+      this.canvas.shadowOffsetY = 0;
+      // this.canvas.shadowBlur = 6;
+      this.canvas.shadowColor = "#000000";
+      this.canvas.fillStyle = this.color;
+      this.canvas.fill();
+      this.canvas.closePath();
+    }
+  }, {
+    key: "move",
+    value: function move() {
+      this.x -= this.direction * Math.sin(this.progress / (this.random1 * 430)) * this.s;
+      this.y -= Math.cos(this.progress / this.h) * this.s;
+
+      if (this.x < 0 || this.x > this.w - this.radius) {
+        clearInterval(this.ID);
+        return false;
+      }
+
+      if (this.y < 0) {
+        clearInterval(this.ID);
+        return false;
+      }
+      this.render();
+      this.progress++;
+      return true;
+    }
+  }]);
+
+  return Particle;
+}();
+
+var microParticle = function () {
+  function microParticle(canvas, options) {
+    _classCallCheck(this, microParticle);
+
+    this.random = Math.random();
+    this.random1 = Math.random();
+    this.random2 = Math.random();
+    this.progress = 0;
+    this.canvas = canvas;
+
+    this.x = options.x;
+    this.y = options.y;
+    this.s = 2 + Math.random() * 3;
+    this.w = $(window).width();
+    this.h = $(window).height();
+    this.radius = 1 + this.random * 0.5;
+    this.color = "#4EFCFE"; //this.random > .5 ? "#a9722c" : "#FFFED7"
+  }
+
+  _createClass(microParticle, [{
+    key: "render",
+    value: function render() {
+      this.canvas.beginPath();
+      this.canvas.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+      this.canvas.lineWidth = 2;
+      this.canvas.fillStyle = this.color;
+      this.canvas.fill();
+      this.canvas.closePath();
+    }
+  }, {
+    key: "move",
+    value: function move() {
+      this.x -= Math.sin(this.progress / (100 / (this.random1 - this.random2 * 10))) * this.s;
+      this.y += Math.cos(this.progress / this.h) * this.s;
+
+      if (this.x < 0 || this.x > this.w - this.radius) {
+        return false;
+      }
+
+      if (this.y > this.h) {
+        return false;
+      }
+      this.render();
+      this.progress++;
+      return true;
+    }
+  }]);
+
+  return microParticle;
+}();
+
+var random_life = 1000;
+
+setInterval(function () {
+  particles.push(new Particle(canvas));
+  random_life = 2000 * Math.random();
+}.bind(this), random_life);
+
+function clear() {
+  var grd = canvas.createRadialGradient(tela.width / 2, tela.height / 2, 0, tela.width / 2, tela.height / 2, tela.width);
+  grd.addColorStop(0, "rgba(82,42,114,1)");
+  grd.addColorStop(1, "rgba(26,14,4,0)");
+  // Fill with gradient
+  canvas.globalAlpha = 0.16;
+  canvas.fillStyle = grd;
+  canvas.fillRect(0, 0, tela.width, tela.height);
+}
+
+function blur(ctx, canvas, amt) {
+  // ctx.filter = `blur(${amt}px)`
+  // ctx.drawImage(canvas, 0, 0)
+  // ctx.filter = 'none'
+}
+
+function update() {
+  clear();
+  particles = particles.filter(function (p) {
+    return p.move();
+  });
+  microparticles = microparticles.filter(function (mp) {
+    return mp.move();
+  });
+  requestAnimationFrame(update.bind(this));
+}
+
+function createCanvas(properties) {
+  var canvas = document.createElement('canvas');
+  canvas.width = properties.width;
+  canvas.height = properties.height;
+  var context = canvas.getContext('2d');
+  return {
+    canvas: canvas,
+    context: context
+  };
+}
+update();
+</script>
+<!--在线客服-->
+<script>
+var flag = 1;
+$('#rightArrow').click(function() {
+    if (flag == 1) {
+        $("#floatDivBoxs").animate({
+            right: '172px'
+        }, 300);
+        $(this).animate({
+            right: '330px'
+        }, 300);
+        $(this).css('background-position', '0px 0');
+        flag = 0;
+    } else {
+        $("#floatDivBoxs").animate({
+            right: '1'
+        }, 300);
+        $(this).animate({
+            right: '155px'
+        }, 300);
+        $(this).css('background-position', '0px 0');
+        flag = 1;
+    }
+});
+</script>
+<!--五大板块 一层-->
+<script>
+function openCity(evt, Name) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(Name).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+<!--点击图片放-->
+<script>
+  jQuery(document).ready(function($){
+  var sliderFinalWidth = 400,
+    maxQuickWidth = 900;
+  $('.cd-trigger').on('click', function(event){
+    var selectedImage = $(this).parent('.cd-item').children('img'),
+      slectedImageUrl = selectedImage.attr('src');
+    $('body').addClass('overlay-layer');
+    animateQuickView(selectedImage, sliderFinalWidth, maxQuickWidth, 'open');
+
+  });
+
+  $('body').on('click', function(event){
+    if( $(event.target).is('.cd-close') || $(event.target).is('body.overlay-layer')) {
+      closeQuickView( sliderFinalWidth, maxQuickWidth);
+    }
+  });
+  $(document).keyup(function(event){
+      if(event.which=='27'){
+      closeQuickView( sliderFinalWidth, maxQuickWidth);
+    }
+  });
+
+  $('.cd-quick-view').on('click', '.cd-slider-navigation a', function(){
+    updateSlider($(this));
+  });
+
+  $(window).on('resize', function(){
+    if($('.cd-quick-view').hasClass('is-visible')){
+      window.requestAnimationFrame(resizeQuickView);
+    }
+  });
+
+  function updateSlider(navigation) {
+    var sliderConatiner = navigation.parents('.cd-slider-wrapper').find('.cd-slider'),
+      activeSlider = sliderConatiner.children('.selected').removeClass('selected');
+    if ( navigation.hasClass('cd-next') ) {
+      ( !activeSlider.is(':last-child') ) ? activeSlider.next().addClass('selected') : sliderConatiner.children('li').eq(0).addClass('selected'); 
+    } else {
+      ( !activeSlider.is(':first-child') ) ? activeSlider.prev().addClass('selected') : sliderConatiner.children('li').last().addClass('selected');
+    } 
+  }
+
+  function updateQuickView(url) {
+    $('.cd-quick-view .cd-slider li').removeClass('selected').find('img[src="'+ url +'"]').parent('li').addClass('selected');
+  }
+
+  function resizeQuickView() {
+    var quickViewLeft = ($(window).width() - $('.cd-quick-view').width())/2,
+      quickViewTop = ($(window).height() - $('.cd-quick-view').height())/2;
+    $('.cd-quick-view').css({
+        "top": quickViewTop,
+        "left": quickViewLeft,
+    });
+  } 
+
+  function closeQuickView(finalWidth, maxQuickWidth) {
+    var close = $('.cd-close'),
+      activeSliderUrl = close.siblings('.cd-slider-wrapper').find('.selected img').attr('src'),
+      selectedImage = $('.empty-box').find('img');
+    if( !$('.cd-quick-view').hasClass('velocity-animating') && $('.cd-quick-view').hasClass('add-content')) {
+      selectedImage.attr('src', activeSliderUrl);
+      animateQuickView(selectedImage, finalWidth, maxQuickWidth, 'close');
+    } else {
+      closeNoAnimation(selectedImage, finalWidth, maxQuickWidth);
+    }
+  }
+
+  function animateQuickView(image, finalWidth, maxQuickWidth, animationType) {
+    var parentListItem = image.parent('.cd-item'),
+      topSelected = image.offset().top - $(window).scrollTop(),
+      leftSelected = image.offset().left,
+      widthSelected = image.width(),
+      heightSelected = image.height(),
+      windowWidth = $(window).width(),
+      windowHeight = $(window).height(),
+      finalLeft = (windowWidth - finalWidth)/2,
+      finalHeight = finalWidth * heightSelected/widthSelected,
+      finalTop = (windowHeight - finalHeight)/2,
+      quickViewWidth = ( windowWidth * .8 < maxQuickWidth ) ? windowWidth * .8 : maxQuickWidth ,
+      quickViewLeft = (windowWidth - quickViewWidth)/2;
+
+    if( animationType == 'open') {
+      parentListItem.addClass('empty-box');
+      $('.cd-quick-view').css({
+          "top": topSelected,
+          "left": leftSelected,
+          "width": widthSelected,
+      }).velocity({
+          'top': finalTop+ 'px',
+          'left': finalLeft+'px',
+          'width': finalWidth+'px',
+      }, 1000, [ 400, 20 ], function(){
+        $('.cd-quick-view').addClass('animate-width').velocity({
+          'left': quickViewLeft+'px',
+            'width': quickViewWidth+'px',
+        }, 300, 'ease' ,function(){
+          $('.cd-quick-view').addClass('add-content');
+        });
+      }).addClass('is-visible');
+    } else {
+      $('.cd-quick-view').removeClass('add-content').velocity({
+          'top': finalTop+ 'px',
+          'left': finalLeft+'px',
+          'width': finalWidth+'px',
+      }, 300, 'ease', function(){
+        $('body').removeClass('overlay-layer');
+        $('.cd-quick-view').removeClass('animate-width').velocity({
+          "top": topSelected,
+            "left": leftSelected,
+            "width": widthSelected,
+        }, 500, 'ease', function(){
+          $('.cd-quick-view').removeClass('is-visible');
+          parentListItem.removeClass('empty-box');
+        });
+      });
+    }
+  }
+  function closeNoAnimation(image, finalWidth, maxQuickWidth) {
+    var parentListItem = image.parent('.cd-item'),
+      topSelected = image.offset().top - $(window).scrollTop(),
+      leftSelected = image.offset().left,
+      widthSelected = image.width();
+    $('body').removeClass('overlay-layer');
+    parentListItem.removeClass('empty-box');
+    $('.cd-quick-view').velocity("stop").removeClass('add-content animate-width is-visible').css({
+      "top": topSelected,
+        "left": leftSelected,
+        "width": widthSelected,
+    });
+  }
+});
+</script>
+</html>

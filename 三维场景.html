@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+  <meta name=”viewport” content="initial-scale=2.0,width=device-width,user-scalable=yes"/>
+	<title>线上展会</title>
+	<style>
+		html {
+	overflow:hidden;
+	-ms-touch-action:none;
+	-ms-content-zooming:none;
+}
+*{font-family: Helvetica,微软雅黑,中易宋体.华文细黑.sans-serif}
+body {
+	position:absolute;
+	margin:0px;
+	padding:0px;
+	background:#fff;
+	width:100%;
+	height:100%;
+}
+#screen {
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	perspective:500px;
+	-webkit-perspective:500px;
+}
+.cube {
+	position:absolute;
+	top:50%;
+	left:50%;
+	width:0;
+	height:0;
+	margin:0;
+	user-select:none;
+	transform-style:preserve-3d;
+	-webkit-transform-style:preserve-3d;
+}
+.face {
+	position:absolute;
+	margin-left:-300px;
+	margin-top:-200px;
+	width:600px;
+	height:400px;
+	backface-visibility:hidden;
+	-webkit-backface-visibility:hidden;
+	transform-origin:50% 50%;
+	-webkit-transform-origin:50% 50%;
+	transition:outline 0.5s ease-in-out 0s;
+	cursor:pointer;
+}
+.button {
+	position:absolute;
+	margin-left:-150px;
+	margin-top:-100px;
+	width:300px;
+	height:200px;
+}
+.face:hover {
+	outline:rgba(255,255,255,1) solid 10px !important;
+}
+	</style>
+</head>
+<body>
+    <canvas id="canvas" style="width: 100%;height: 100%;"></canvas>
+	<div id="screen">
+    <div id="cube" class="cube">
+        <!-- cube images -->
+        <img id="1" src="./图片/无人加油站.jpg" class="face" data-transform="translateZ(-400px)" style="outline:none !important">
+        <img id="2" src="./图片/缤果盒子.jpeg" class="face" data-transform="rotateY(90deg) translateZ(-400px)">
+        <img id="3" src="./图片/超级猩猩.jpg" class="face" data-transform="rotateY(-90deg) translateZ(-400px)">
+        <img id="4" src="./图片/建设银行.jpg" class="face" data-transform="rotateY(180deg) translateZ(-400px)">
+        <img id="5" src="./图片/麦当劳未来餐厅.JPEG" class="face" data-transform="rotateX(90deg) translateZ(-300px)">
+        <img id="6" src="./图片/无人图书馆.jpg" class="face" data-transform="rotateX(-90deg) translateZ(-300px)">
+        <!-- bonus image -->
+        <img id="7" src="./图片/无人洗车.jpg" class="face" data-transform="rotateY(180deg) translateZ(305px)" style="visibility:hidden">
+        <!-- buttons -->
+        <img src="./图片/大乐摩吧.jpg" class="face button" alt="7" data-transform="translateY(-80px) translateZ(-340px) scale(0.5)">
+        <img src="./图片/功夫豆照片打印机.jpg" class="face button" alt="2" data-transform="translateX(-200px) translateY(-80px) translateZ(-340px) scale(0.5)">
+        <img src="./图片/友宝自动贩卖机.jpg" class="face button" alt="3" data-transform="translateX(200px) translateY(-80px) translateZ(-340px) scale(0.5)">
+        <img src="./图片/魔力伞.jpg" class="face button" alt="4" data-transform="translateY(80px) translateZ(-340px) scale(0.5)">
+        <img src="./图片/街电.jpeg" class="face button" alt="5" data-transform="translateX(-200px) translateY(80px) translateZ(-340px) scale(0.5)">
+        <img src="./图片/智能快递柜.jpg" class="face button" alt="6" data-transform="translateX(200px) translateY(80px) translateZ(-340px) scale(0.5)">
+    </div>
+</div>
+</body>
+<script>
+!
+function() {
+    "use strict";
+
+    var screen = {}; (function() {
+        this.elem = document.getElementById("screen"),
+        this.width = 0;
+        this.height = 0;
+        this.resize = function() {
+            this.width = +this.elem.offsetWidth;
+            this.height = +this.elem.offsetHeight;
+        }
+        this.elem.onselectstart = function() {
+            return false;
+        }
+        this.elem.ondragstart = function() {
+            return false;
+        }
+        window.addEventListener('resize', this.resize.bind(this), false);
+        this.resize();
+        this.pointer = {
+            x: 0,
+            y: 0,
+            dx: 0,
+            dy: 0,
+            touchMode: false,
+            center: function(s) {
+                this.dx *= s;
+                this.dy *= s;
+                endX = endY = 0;
+            }
+        }
+        var started = false,
+        startX = 0,
+        startY = 0,
+        endX = 0,
+        endY = 0;
+        this.addEvent = function(e, fn) {
+            for (var i = 0,
+            events = e.split(','); i < events.length; i++) {
+                this.elem.addEventListener(events[i], fn.bind(this.pointer), false);
+            }
+        }
+        this.addEvent("mousemove,touchmove",
+        function(e) {
+            e.preventDefault();
+            this.touchMode = e.targetTouches;
+            var pointer = this.touchMode ? this.touchMode[0] : e;
+            this.x = pointer.clientX;
+            this.y = pointer.clientY;
+            if (started) {
+                this.dx = endX - (this.x - startX);
+                this.dy = endY - (this.y - startY);
+            }
+        });
+        this.addEvent("mousedown,touchstart",
+        function(e) {
+            e.preventDefault();
+            this.touchMode = e.targetTouches;
+            var pointer = this.touchMode ? this.touchMode[0] : e;
+            startX = this.x = pointer.clientX;
+            startY = this.y = pointer.clientY;
+            started = true;
+            setTimeout(function() {
+                if (!started && Math.abs(startX - this.x) < 11 && Math.abs(startY - this.y) < 11) {
+                    if (this.tap) this.tap(e);
+                }
+            }.bind(this), 200);
+        });
+        this.addEvent("mouseup,touchend,touchcancel",
+        function(e) {
+            e.preventDefault();
+            endX = this.dx;
+            endY = this.dy;
+            started = false;
+        });
+    }).apply(screen);
+    var pointer = screen.pointer;
+    var transform = (typeof document.body.style.webkitTransform != "undefined") ? "-webkit-transform": "transform";
+
+    var tweens = {}; (function() {
+        var tweens = [];
+        var proto = {
+            normalPI: function() {
+                if (Math.abs(this.target - this.value) > Math.PI) {
+                    if (this.target < this.value) this.value -= 2 * Math.PI;
+                    else this.value += 2 * Math.PI;
+                }
+            },
+            setTarget: function(target, speedMod) {
+                this.speedMod = (speedMod) ? speedMod: 1;
+                this.target = target;
+                if (this.isAngle) {
+                    this.target = this.target % (2 * Math.PI);
+                    this.normalPI();
+                }
+                if (this.running && this.oldTarget === target) return;
+                this.oldTarget = target;
+                this.running = true;
+                this.prog = 0;
+                this.from = this.value;
+                this.dist = -(this.target - this.from) * 0.5;
+            },
+            ease: function() {
+                if (!this.running) return;
+                var s = this.speedMod * this.steps;
+                if (this.prog++<s) {
+                    this.value = this.dist * (Math.cos(Math.PI * (this.prog / s)) - 1) + this.from;
+                    if (this.isAngle) this.normalPI();
+                } else {
+                    this.running = false;
+                    this.value = this.target;
+                }
+            }
+        }
+        this.add = function(steps, initValue, initValueTarget, isAngle) {
+            var tween = Object.create(proto);
+            tween.target = initValueTarget || 0;
+            tween.value = initValue || 0;
+            tween.steps = steps;
+            tween.isAngle = isAngle || false;
+            tween.speedMod = 1;
+            tween.setTarget(tween.target);
+            tweens.push(tween);
+            return tween;
+        }
+        this.iterate = function() {
+            for (var i = 0,
+            len = tweens.length; i < len; i++) {
+                tweens[i].ease();
+            }
+        }
+    }).apply(tweens);
+
+    var cube = document.getElementById("cube");
+    var faces = document.querySelectorAll(".face");
+
+    var getComputedMatrix = function(elem) {
+        var computedStyle = getComputedStyle(elem, null);
+        var val = computedStyle.transform || computedStyle.webkitTransform;
+        return val.split(/\s*[(),]\s*/).slice(1, -1);
+    }
+
+    for (var i = 0,
+    len = faces.length; i < len; i++) {
+        var face = faces[i];
+        face.style[transform] = face.getAttribute("data-transform");
+    }
+
+    pointer.tap = function(e) {
+        if (e.target.className.indexOf("face") >= 0) {
+            var t = e.target.alt == "" ? e.target: document.getElementById(e.target.alt);
+            camera.setTarget(t);
+        }
+    }
+
+    var camera = {
+        globalRX: 0,
+        globalRY: 0,
+        z: tweens.add(100, 0, 0),
+        rx: tweens.add(100, 0, 0, true),
+        ry: tweens.add(100, 0, 0, true),
+        targeted: null,
+        setTarget: function(elem) {
+
+            var matrix = getComputedMatrix(elem);
+
+            var rotateY = Math.asin( - matrix[2]);
+            var rotateX = Math.atan2( + matrix[6], +matrix[10]);
+            if (rotateY) rotateY -= Math.PI;
+            if (rotateX) rotateX -= Math.PI;
+
+            if (this.targeted) {
+                this.targeted.style.outline = "rgba(0,0,0,1) solid 10px";
+            }
+            if (this.targeted != elem) {
+                this.z.setTarget(600);
+                if (elem.id == "4") {
+                    document.getElementById("7").style.visibility = "hidden";
+                }
+                if (elem.id == "7") {
+                    this.z.setTarget( - 200);
+                    document.getElementById("7").style.visibility = "visible";
+                }
+                elem.style.outline = "rgba(255,255,255,1) solid 10px";
+                this.targeted = elem;
+            } else {
+                this.z.setTarget(0);
+                if (elem.id == "7") {
+                    camera.setTarget(document.getElementById("1"));
+                    return;
+                }
+                this.targeted = null;
+            }
+
+            this.rx.setTarget(rotateX);
+            this.ry.setTarget(rotateY);
+        },
+        move: function() {
+            tweens.iterate();
+            if (pointer.touchMode) {
+
+                var x = -pointer.dy * 0.001;
+                var y = pointer.dx * 0.001;
+                pointer.center(0.98);
+            } else {
+
+                var x = -(pointer.y - screen.height * 0.5) * 0.001;
+                var y = +(pointer.x - screen.width * 0.5) * 0.001;
+            }
+
+            this.globalRX += ((x - this.globalRX) * 0.1);
+            this.globalRY += ((y - this.globalRY) * 0.1);
+
+            cube.style[transform] = "translateZ(" + (this.z.value) + "px) rotateX(" + (this.rx.value + this.globalRX) + "rad) rotateY(" + (this.ry.value + this.globalRY) + "rad)";
+        }
+    }
+
+    var run = function() {
+        requestAnimationFrame(run);
+        camera.move();
+    }
+    run();
+} ();
+</script>
+<script>
+ var canvas = document.getElementById('canvas'),
+     ctx = canvas.getContext('2d'),
+     w = canvas.width = window.innerWidth,
+     h = canvas.height = window.innerHeight,
+
+     hue = 217,
+     stars = [],
+     count = 0,
+     maxStars = 1200;
+
+ var canvas2 = document.createElement('canvas'),
+     ctx2 = canvas2.getContext('2d');
+ canvas2.width = 100;
+ canvas2.height = 100;
+ var half = canvas2.width / 2,
+     gradient2 = ctx2.createRadialGradient(half, half, 0, half, half, half);
+ gradient2.addColorStop(0.025, '#fff');
+ gradient2.addColorStop(0.1, 'hsl(' + hue + ', 61%, 33%)');
+ gradient2.addColorStop(0.25, 'hsl(' + hue + ', 64%, 6%)');
+ gradient2.addColorStop(1, 'transparent');
+
+ ctx2.fillStyle = gradient2;
+ ctx2.beginPath();
+ ctx2.arc(half, half, half, 0, Math.PI * 2);
+ ctx2.fill();
+
+ // End cache
+ $(window).resize(function() {
+     w = canvas.width = window.innerWidth;
+     h = canvas.height = window.innerHeight;
+     canvas.width(w).height(h);
+
+ });
+
+ function random(min, max) {
+     if (arguments.length < 2) {
+         max = min;
+         min = 0;
+     }
+
+     if (min > max) {
+         var hold = max;
+         max = min;
+         min = hold;
+     }
+
+     return Math.floor(Math.random() * (max - min + 1)) + min;
+ }
+
+ function maxOrbit(x, y) {
+     var max = Math.max(x, y),
+         diameter = Math.round(Math.sqrt(max * max + max * max));
+     return diameter / 2;
+ }
+
+ var Star = function() {
+
+     this.orbitRadius = random(maxOrbit(w, h));
+     this.radius = random(60, this.orbitRadius) / 12;
+     this.orbitX = w / 2;
+     this.orbitY = h / 2;
+     this.timePassed = random(0, maxStars);
+     this.speed = random(this.orbitRadius) / 900000;
+     this.alpha = random(2, 10) / 10;
+
+     count++;
+     stars[count] = this;
+ }
+
+ Star.prototype.draw = function() {
+     var x = Math.sin(this.timePassed) * this.orbitRadius + this.orbitX,
+         y = Math.cos(this.timePassed) * this.orbitRadius + this.orbitY,
+         twinkle = random(10);
+
+     if (twinkle === 1 && this.alpha > 0) {
+         this.alpha -= 0.05;
+     } else if (twinkle === 2 && this.alpha < 1) {
+         this.alpha += 0.05;
+     }
+
+     ctx.globalAlpha = this.alpha;
+     ctx.drawImage(canvas2, x - this.radius / 2, y - this.radius / 2, this.radius, this.radius);
+     this.timePassed += this.speed;
+ }
+
+ for (var i = 0; i < maxStars; i++) {
+     new Star();
+ }
+
+ function animation() {
+     ctx.globalCompositeOperation = 'source-over';
+     ctx.globalAlpha = 0.8;
+     ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 1)';
+     ctx.fillRect(0, 0, w, h)
+
+     ctx.globalCompositeOperation = 'lighter';
+     for (var i = 1, l = stars.length; i < l; i++) {
+         stars[i].draw();
+     };
+
+     window.requestAnimationFrame(animation);
+ }
+
+ animation();
+</script>
+
+</html>

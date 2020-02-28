@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name=”viewport” content="initial-scale=2.0,width=device-width,user-scalable=yes"/>
+	<!--图标-->
+  <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+	<title>观众登记</title>
+	<style>
+  *{font-family: Helvetica,"Microsoft YaHei",STXihei,sans-serif;}
+  @media(max-width:960px){
+    #consticky{display: none;}
+
+  }
+			/*导航栏*/
+  .navbar {
+    overflow: visible;
+    background-color: #333;
+    font-family:sans-serif;
+}
+
+.navbar a {
+    float: left;
+    font-size: 1em;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: visible;
+}
+
+.dropdown .dropbtn {
+    font-size: 1em;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: #333;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+	</style>
+</head>
+<body style="margin:0px;">
+  <div style="float:right;" id="github_iframe" ></div>
+	<!--导航栏-->
+  <div class="navbar" style="height: 52px;width: 100%;z-index: 999;">
+    <div style="margin-left: 40%;">  <!--移动导航标签位置-->
+  <a href="./index.html">首页</a>
+  <div class="dropdown">
+    <button class="dropbtn" style="cursor: pointer;">线上展厅
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./三维场景.html">三维场景</a>
+      <a href="./index.html#look">网上展览</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn" style="cursor: pointer;">关于UEE 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./关于UEE.html">展会概况</a>
+      <a href="./关于UEE.html">服务团队</a>
+      <a href="./关于UEE.html">同期活动</a>
+      <a href="./关于UEE.html">展讯快报</a>
+      <a href="./关于UEE.html">下载中心</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn" style="cursor: pointer;">展商
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./展商入口.html">参展范围</a>
+      <a href="./展商入口.html">展位报价</a>
+      <a href="./展商入口.html">展区规划</a>
+      <a href="./展商入口.html">展商名录</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn" style="cursor: pointer;">观众
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./观众入口.html">观众服务</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn" style="cursor: pointer;">媒体 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./媒体对接.html">媒体对接</a>
+      <a href="./媒体对接.html">新闻中心</a>
+      <a href="./媒体对接.html">合作媒体</a>
+    </div>
+  </div> 
+</div>
+</div>
+<!--表单-->
+	<div style="width: 70%;margin:3% auto 0;height: 600px;border: 1px solid #eaecee;
+box-shadow: 0 4px 12px -1px rgba(36,41,46,.6);z-index: 999;">
+<div style="margin-left: 5%;">
+<h1 style="margin-bottom: 0px;">观众登记</h1>
+<span style="display:block;background: #3198D5;width:20%;height: 4px;"></span>
+<div>
+	<p style="color: #3198D5;font-size: 1.2em;font-weight: bold;">填写下表，即可免费参观本期展会</p>
+		<form style="margin-left: 3%;" method="post">
+		<p style="color: #3198D5;font-size: 1.2em;font-weight: bold;">参展观众信息</p>
+		<div style="margin-left: 6%;">
+		<p style="font-size: 1em"><span style="color: red;">*</span>姓名：<input type="text" name="ename" style="border: none;outline: none;width:40%;border-bottom:1px solid #666;" /></p>
+		<p style="font-size: 1em"><span style="color: red;">*</span>手机：<input type="text" name="ename" style="border: none;outline: none;width:40%;border-bottom:1px solid #666;" /></p>
+		<p style="font-size: 1em"><span style="color: red;">*</span>邮箱：<input type="text" name="ename" style="border: none;outline: none;width:40%;border-bottom:1px solid #666;" /></p>
+		<p style="font-size: 1em"><span style="color: red;">*</span>qq号：<input type="text" name="ename" style="border: none;outline: none;width:40%;border-bottom:1px solid #666;" /></p>
+    <p style="font-size: 1em"><span style="color: red;">*</span>公司：<input type="text" name="ename" style="border: none;outline: none;width:41%;border-bottom:1px solid #666;" /></p>
+		<p style="font-size: 1em"><span style="color: red;">*</span>职位：<input type="text" name="ename" style="border: none;outline: none;width:41%;border-bottom:1px solid #666;" /></p>
+	</div>
+		<span style="color: red;">*</span><span style="font-size: 1em;color: gray;">注：报名成功后即可免费参展，如有疑问请联系我们</span>
+		<p><input type="reset" onclick="submit_2()" style="padding: 1% 2% 1%;background: #3198D5;border: 1px solid #f8f8f8;border-radius: 20px;cursor: pointer;font-size: 1.2em;width: 15%;color: white;margin-left: 20%;" value="提交" /></p>
+</form>
+	</div>
+</div>
+<!--右边信息-->
+<div style="width: 25%;height: 36%;box-shadow:0 4px 12px -1px rgba(36,41,46,.6);position: sticky;left: 65%;bottom: 60%;z-index: 111;">
+	<p id="consticky" style="color: #3198D5;font-size: 1.2em;font-weight: bold;text-align: left;">观众咨询:</p>
+	<div style="margin-left: 5%;">
+	<p style="line-height: 15px;font-size: 1em">陈小姐</p>
+	<p style="line-height: 15px;font-size: 1em">电话：(010)66666666</p>
+	<p style="line-height: 15px;font-size: 1em">手机：18698712345</p>
+	<p style="line-height: 15px;font-size: 1em">QQ:666666223</p>
+	<p style="line-height: 15px;font-size: 1em">邮箱：666666223@qq.com</p>
+</div>
+</div>
+</div>
+<!--尾部-->
+<div id="footer" style="width: 100%;height: 320px;background: #333;margin-top: 200px;z-index: 999;">
+  <h1 style="color: white;text-align: center;font-size: 2.5em;font-weight: normal;line-height: 52px;">联系我们</h1>
+  <div style="display: block;margin:0 auto 0;">
+ <div id="left" style="width: 30%;height: 250px;margin-left: 10%;float: left;margin-top: -10px;">
+    <p style="color: white;font-weight: bold;">主办单位</p>
+    <span style="color: white;">中国百货商业协会自助售货行业分会</span><br/>
+    <span style="color: white;">广东省互联网协会</span>
+    <p style="color: white;margin-top: 20px;font-weight: bold;">承办单位</p>
+    <span style="color: white;">广州南望会展有限公司</span>
+  </div>
+    <div id="middle" style="float: left;width: 20%;height: 250px;margin-left: 5%;margin-top: -10px;">
+      <p style="color: white;font-weight: bold;margin-bottom: 30px;">展会预定联络</p>
+      <p><i class="fa fa-user" style="color: white;font-size: 18px;">&nbsp&nbsp&nbsp陈小姐</i></p>
+      <p><i class="fa fa-phone" style="color: white;font-size: 18px;">&nbsp&nbsp&nbsp+86 123456789</i></p>
+      <p><i class="fa fa-envelope" style="color: white;font-size: 18px;">&nbsp&nbsp&nbsp12345678@qq.com</i></p>
+    </div>
+    <div id="right" style="float: left;margin-top: 0px;margin-left:10%;width: 
+    10%;margin-top: 7px;">
+      <img style="border: 5px solid white;" src="./首页/qrcode.png" alt="qrcode" />
+      <p style="color: white;text-align: center;margin-top: 5px;">扫一扫，关注</p>
+      <p style="color: white;text-align: center;margin-top: -15px;">官方微信公众号</p>
+    </div>
+  </div>
+</div>
+<div style="width: 100%;background: #444;padding-top:5px;height: 50px;"><p style="text-align: center;line-height: 20px;color:white"><a style="color: white;text-decoration: none;" href="http://www.miitbeian.gov.cn/">粤ICP备18036003号-2</a> | Copyright ©2018 无人经济体验展策划小组</p></div>
+</body>
+<script type="text/javascript">
+function submit_2()
+{
+alert("报名成功,感谢你的关注。")
+}
+</script>
+<script>
+/**
+ * Copyright (c) 2016 hustcc
+ * License: MIT
+ * Version: %%GULP_INJECT_VERSION%%
+ * GitHub: https://github.com/hustcc/canvas-nest.js
+**/
+!function() {
+  //封装方法，压缩之后减少文件大小
+  function get_attribute(node, attr, default_value) {
+    return node.getAttribute(attr) || default_value;
+  }
+  //封装方法，压缩之后减少文件大小
+  function get_by_tagname(name) {
+    return document.getElementsByTagName(name);
+  }
+  //获取配置参数
+  function get_config_option() {
+    var scripts = get_by_tagname("script"),
+      script_len = scripts.length,
+      script = scripts[script_len - 1]; //当前加载的script
+    return {
+      l: script_len, //长度，用于生成id用
+      z: get_attribute(script, "zIndex", -1), //z-index
+      o: get_attribute(script, "opacity", 0.5), //opacity
+      c: get_attribute(script, "color", "0,0,0"), //color
+      n: get_attribute(script, "count", 99) //count
+    };
+  }
+  //设置canvas的高宽
+  function set_canvas_size() {
+    canvas_width = the_canvas.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth, 
+    canvas_height = the_canvas.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+  }
+
+  //绘制过程
+  function draw_canvas() {
+    context.clearRect(0, 0, canvas_width, canvas_height);
+    //随机的线条和当前位置联合数组
+    var e, i, d, x_dist, y_dist, dist; //临时节点
+    //遍历处理每一个点
+    random_points.forEach(function(r, idx) {
+      r.x += r.xa, 
+      r.y += r.ya, //移动
+      r.xa *= r.x > canvas_width || r.x < 0 ? -1 : 1, 
+      r.ya *= r.y > canvas_height || r.y < 0 ? -1 : 1, //碰到边界，反向反弹
+      context.fillRect(r.x - 0.5, r.y - 0.5, 1, 1); //绘制一个宽高为1的点
+      //从下一个点开始
+      for (i = idx + 1; i < all_array.length; i++) {
+        e = all_array[i];
+        // 当前点存在
+        if (null !== e.x && null !== e.y) {
+          x_dist = r.x - e.x; //x轴距离 l
+          y_dist = r.y - e.y; //y轴距离 n
+          dist = x_dist * x_dist + y_dist * y_dist; //总距离, m
+
+          dist < e.max && (e === current_point && dist >= e.max / 2 && (r.x -= 0.03 * x_dist, r.y -= 0.03 * y_dist), //靠近的时候加速
+            d = (e.max - dist) / e.max,
+            context.beginPath(),
+            context.lineWidth = d / 2,
+            context.strokeStyle = "rgba(" + config.c + "," + (d + 0.2) + ")",
+            context.moveTo(r.x, r.y),
+            context.lineTo(e.x, e.y),
+            context.stroke());
+        }
+      }
+    }), frame_func(draw_canvas);
+  }
+  //创建画布，并添加到body中
+  var the_canvas = document.createElement("canvas"), //画布
+    config = get_config_option(), //配置
+    canvas_id = "c_n" + config.l, //canvas id
+    context = the_canvas.getContext("2d"), canvas_width, canvas_height, 
+    frame_func = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function(func) {
+      window.setTimeout(func, 1000 / 45);
+    }, random = Math.random, 
+    current_point = {
+      x: null, //当前鼠标x
+      y: null, //当前鼠标y
+      max: 20000 // 圈半径的平方
+    },
+    all_array;
+  the_canvas.id = canvas_id;
+  the_canvas.style.cssText = "position:fixed;top:0;left:0;z-index:" + config.z + ";opacity:" + config.o;
+  get_by_tagname("body")[0].appendChild(the_canvas);
+
+  //初始化画布大小
+  set_canvas_size();
+  window.onresize = set_canvas_size;
+  //当时鼠标位置存储，离开的时候，释放当前位置信息
+  window.onmousemove = function(e) {
+    e = e || window.event;
+    current_point.x = e.clientX;
+    current_point.y = e.clientY;
+  }, window.onmouseout = function() {
+    current_point.x = null;
+    current_point.y = null;
+  };
+  //随机生成config.n条线位置信息
+  for (var random_points = [], i = 0; config.n > i; i++) {
+    var x = random() * canvas_width, //随机位置
+      y = random() * canvas_height,
+      xa = 2 * random() - 1, //随机运动方向
+      ya = 2 * random() - 1;
+    // 随机点
+    random_points.push({
+      x: x,
+      y: y,
+      xa: xa,
+      ya: ya,
+      max: 6000 //沾附距离
+    });
+  }
+  all_array = random_points.concat([current_point]);
+  //0.1秒后绘制
+  setTimeout(function() {
+    draw_canvas();
+  }, 100);
+}();
+
+</script>
+</html>
